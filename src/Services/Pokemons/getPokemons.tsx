@@ -17,6 +17,7 @@ export default function Pokemons(): JSX.Element {
   }
 
   const [pokemons, setPokemons] = useState<PokeInterface | any>();
+  const [searchValue, setSearchValue] = useState<string>('');
   useEffect(() => {
     getPokemons();
   }, []);
@@ -31,20 +32,34 @@ export default function Pokemons(): JSX.Element {
       .all(endpoints.map((end) => axios.get(end)))
       .then((res) => setPokemons(res));
   };
-  return (
-    <div className="App">
-      <Grid container justifyContent="center" spacing={8}>
+  const handleChange = (e: any) => {
+  console.log( setSearchValue(e.target.value))
+  }
+  const filteredPokes = !!searchValue ? 
+  pokemons.filter((pokemon: PokeInterface) => { 
+    return pokemon.data.name.includes(searchValue)})
+    
+    : pokemons;
+    
+    
+    return (
+      <div className="App">
+      <input 
+      type="search"
+      value={searchValue}
+      onChange={handleChange } />
+      <Grid container justifyContent="center" spacing={2}>
         {pokemons?.map((pokes: PokeInterface, index: PokeInterface) => {
           return (
             <Grid
-              item
-              xl={4}
-              lg={4}
-              md={4}
-              sm={4}
-              xs={6}
-              justifyContent="center"
-              display="flex"
+            item
+            xl={4}
+            lg={4}
+            md={4}
+            sm={4}
+            xs={6}
+            justifyContent="center"
+            display="flex"
             >
               <div className="pokeCard">
                 <div className="poke-container">
@@ -53,14 +68,15 @@ export default function Pokemons(): JSX.Element {
                     className="poke-images"
                   />
                   <div>
+
                     <h3>N°{pokes.data.id}</h3>
                     <h2>{pokes.data.name}</h2>
                     <div className="poke-types">
                       {pokes.data.types.map((ty: PokeInterface) => (
                         <h2>{ty.type.name} </h2>
-                      ))}
-                    </div>
+                        ))}
                   </div>
+                    </div>
                 </div>
               </div>
             </Grid>

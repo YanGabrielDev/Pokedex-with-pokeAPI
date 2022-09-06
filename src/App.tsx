@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Grid container={true} display="center" justifyContent="center">
-        <Grid lg={6}>
+        <Grid lg={8}>
           <Pokemons />
         </Grid>
       </Grid>
