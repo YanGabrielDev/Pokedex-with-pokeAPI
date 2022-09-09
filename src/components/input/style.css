@@ -1,0 +1,25 @@
+.input-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+.text-input{
+  width: 100%;
+  font-size: 38px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 37px;
+  background: url("../../../public/pokeball.png");
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-position: right;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+
+}
+::placeholder{
+font-size: 2rem;
+}
