@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { Grid } from "@mui/material";
-
+import { TextInput } from "../../components/input";
 export default function Pokemons(): JSX.Element {
   interface PokeInterface {
     type: any;
@@ -17,13 +17,11 @@ export default function Pokemons(): JSX.Element {
   }
 
   const [pokemons, setPokemons] = useState<PokeInterface | any>();
-  const [searchValue, setSearchValue] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>("");
   useEffect(() => {
     getPokemons();
   }, []);
   const getPokemons = () => {
-    console.log(pokemons);
-
     let endpoints = [];
     for (let i = 1; i < 100; i++) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
@@ -32,34 +30,35 @@ export default function Pokemons(): JSX.Element {
       .all(endpoints.map((end) => axios.get(end)))
       .then((res) => setPokemons(res));
   };
-  const handleChange = (e: any) => {
-  console.log( setSearchValue(e.target.value))
-  }
-  const filteredPokes = !!searchValue ? 
-  pokemons.filter((pokemon: PokeInterface) => { 
-    return pokemon.data.name.includes(searchValue)})
-    
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
+    setSearchValue(event.target.value);
+  };
+  const filteredPokes = !!searchValue
+    ? pokemons.filter((pokemon: PokeInterface) => {
+        console.log(pokemon.data.name);
+        return pokemon.data.name
+          .toLowerCase()
+          .includes(searchValue.toLowerCase());
+      })
     : pokemons;
-    
-    
-    return (
-      <div className="App">
-      <input 
-      type="search"
-      value={searchValue}
-      onChange={handleChange } />
+  console.log(filteredPokes);
+
+  return (
+    <div className="App">
+      <TextInput handleChange={handleChange} searchValue={searchValue} />
       <Grid container justifyContent="center" spacing={2}>
-        {pokemons?.map((pokes: PokeInterface, index: PokeInterface) => {
+        {filteredPokes?.map((pokes: PokeInterface, index: PokeInterface) => {
           return (
             <Grid
-            item
-            xl={4}
-            lg={4}
-            md={4}
-            sm={4}
-            xs={6}
-            justifyContent="center"
-            display="flex"
+              item
+              xl={4}
+              lg={4}
+              md={4}
+              sm={4}
+              xs={6}
+              justifyContent="center"
+              display="flex"
             >
               <div className="pokeCard">
                 <div className="poke-container">
@@ -68,15 +67,14 @@ export default function Pokemons(): JSX.Element {
                     className="poke-images"
                   />
                   <div>
-
-                    <h3>N°{pokes.data.id}</h3>
-                    <h2>{pokes.data.name}</h2>
+                    <h3 className="poke-id">N°{pokes.data.id}</h3>
+                    <h1>{pokes.data.name}</h1>
                     <div className="poke-types">
                       {pokes.data.types.map((ty: PokeInterface) => (
                         <h2>{ty.type.name} </h2>
-                        ))}
-                  </div>
+                      ))}
                     </div>
+                  </div>
                 </div>
               </div>
             </Grid>

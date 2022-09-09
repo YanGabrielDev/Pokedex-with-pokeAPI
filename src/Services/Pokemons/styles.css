@@ -1,16 +1,17 @@
 .pokeCard{
-  width: 300px;
-  height: auto;
+  width: 100%;
+  height: 230px;
   background-color: #ffffff;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   text-align: center;
   margin-top: 50px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
   }
   .poke-images{
     position: relative;
-    top: -55px;
+    top: -80px;
   }
   .poke-types{
     display: flex;
@@ -18,5 +19,8 @@
   }
   .poke-container{
     width: 100%;
-
+    padding: 2em 0;
   }
+.poke-id{
+color: #737574;
+}
