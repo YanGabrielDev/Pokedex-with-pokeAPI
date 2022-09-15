@@ -66,12 +66,14 @@ export default function Pokemons(): JSX.Element {
                     src={pokes.data.sprites.front_default}
                     className="poke-images"
                   />
-                  <div>
+                  <div className="poke-description">
                     <h3 className="poke-id">N°{pokes.data.id}</h3>
-                    <h1>{pokes.data.name}</h1>
-                    <div className="poke-types">
+                    <h1 className="poke-name">{pokes.data.name}</h1>
+                    <div className="poke-type-container">
                       {pokes.data.types.map((ty: PokeInterface) => (
-                        <h2>{ty.type.name} </h2>
+                         <div className="poke-type">
+                           <h2>{ty.type.name} </h2>
+                         </div>
                       ))}
                     </div>
                   </div>
