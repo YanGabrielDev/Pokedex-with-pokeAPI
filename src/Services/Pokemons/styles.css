@@ -13,9 +13,11 @@
     position: relative;
     top: -80px;
   }
-  .poke-types{
+  .poke-type-container{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 10px;
+    
   }
   .poke-container{
     width: 100%;
@@ -23,4 +25,15 @@
   }
 .poke-id{
 color: #737574;
+}
+.poke-description{
+  margin-top: -40px;
+}
+.poke-name{
+  margin-top: 10px;
+}
+.poke-type{
+  padding: 5px;
+  background-color: red;
+  border-radius: 8px;
 }
