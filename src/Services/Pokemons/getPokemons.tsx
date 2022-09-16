@@ -1,48 +1,47 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import "./styles.css";
-import { Grid } from "@mui/material";
-import { TextInput } from "../../components/input";
+import axios from "axios"
+import React, { useEffect, useState } from "react"
+import "./styles.css"
+import { Grid } from "@mui/material"
+import { TextInput } from "../../components/Input"
 export default function Pokemons(): JSX.Element {
   interface PokeInterface {
-    type: any;
+    type: any
     data: {
-      name: string;
-      id: number;
+      name: string
+      id: number
       sprites: {
-        front_default: string;
-      };
-      types: [];
-    };
+        front_default: string
+      }
+      types: []
+    }
   }
 
-  const [pokemons, setPokemons] = useState<PokeInterface | any>();
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [pokemons, setPokemons] = useState<PokeInterface | any>()
+  const [searchValue, setSearchValue] = useState<string>("")
   useEffect(() => {
-    getPokemons();
-  }, []);
+    getPokemons()
+  }, [])
   const getPokemons = () => {
-    let endpoints = [];
+    let endpoints = []
     for (let i = 1; i < 100; i++) {
-      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
     }
     let response = axios
       .all(endpoints.map((end) => axios.get(end)))
-      .then((res) => setPokemons(res));
-  };
+      .then((res) => setPokemons(res))
+  }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-    setSearchValue(event.target.value);
-  };
+    setSearchValue(event.target.value)
+  }
+
   const filteredPokes = !!searchValue
     ? pokemons.filter((pokemon: PokeInterface) => {
-        console.log(pokemon.data.name);
+        console.log(pokemon.data.name)
         return pokemon.data.name
           .toLowerCase()
-          .includes(searchValue.toLowerCase());
+          .includes(searchValue.toLowerCase())
       })
-    : pokemons;
-  console.log(filteredPokes);
+    : pokemons
 
   return (
     <div className="App">
@@ -71,18 +70,18 @@ export default function Pokemons(): JSX.Element {
                     <h1 className="poke-name">{pokes.data.name}</h1>
                     <div className="poke-type-container">
                       {pokes.data.types.map((ty: PokeInterface) => (
-                         <div className="poke-type">
-                           <h2>{ty.type.name} </h2>
-                         </div>
+                        <div className="poke-type">
+                          <h2>{ty.type.name} </h2>
+                        </div>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
             </Grid>
-          );
+          )
         })}
       </Grid>
     </div>
-  );
+  )
 }
