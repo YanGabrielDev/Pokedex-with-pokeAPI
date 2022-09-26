@@ -32,88 +32,84 @@ color: #737574;
 .poke-name{
   margin-top: 10px;
 }
-.poke-type{
-  padding: 5px;
-  border-radius: 20px;
-}
 .water{
   background-color: #0099ff;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px;
 }
 .fire{
   background-color: #ff1a1a;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px;
 }
 .grass{
   background-color: #00e600;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px;
 }
 .poison{
   background-color: #3d004d;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .bug{
   background-color: #008000;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .flying{
   background-color: #ffff99
   ;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .electric{
   background-color: #ffff00;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .ground{
   background-color: #663300;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .fairy{
   background-color: #ff9999;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .normal{
   background-color: #999966;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .fighting{
   background-color: #ffcccc;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .psychic{
   background-color: #cc00ff;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .steel{
   background-color: #49495a;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .ice{
   background-color: #b9b9c0;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .ghost{
   background-color: #666699;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
 .rock{
   background-color: #565658;
-  padding: 5px;
+ padding: 6px 22px;
   border-radius: 20px; 
 }
