@@ -18,9 +18,11 @@ export default function Pokemons(): JSX.Element {
 
   const [pokemons, setPokemons] = useState<PokeInterface | any>()
   const [searchValue, setSearchValue] = useState<string>("")
+
   useEffect(() => {
     getPokemons()
   }, [])
+
   const getPokemons = () => {
     let endpoints = []
     for (let i = 1; i < 100; i++) {
@@ -36,13 +38,11 @@ export default function Pokemons(): JSX.Element {
 
   const filteredPokes = !!searchValue
     ? pokemons.filter((pokemon: PokeInterface) => {
-        console.log(pokemon.data.name)
         return pokemon.data.name
           .toLowerCase()
           .includes(searchValue.toLowerCase())
       })
     : pokemons
-
   return (
     <div className="App">
       <TextInput handleChange={handleChange} searchValue={searchValue} />
@@ -70,7 +70,7 @@ export default function Pokemons(): JSX.Element {
                     <h1 className="poke-name">{pokes.data.name}</h1>
                     <div className="poke-type-container">
                       {pokes.data.types.map((ty: PokeInterface) => (
-                        <div className="poke-type">
+                        <div className={ty.type.name}>
                           <h2>{ty.type.name} </h2>
                         </div>
                       ))}
