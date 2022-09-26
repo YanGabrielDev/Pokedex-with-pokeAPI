@@ -1,0 +1,14 @@
+img{
+  width: 100%;
+  font-size: 38px;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 37px;
+  background: url("../../../public/pngegg.png");
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-position: right;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+}
